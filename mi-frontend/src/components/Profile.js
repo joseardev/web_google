@@ -88,6 +88,29 @@ function Profile() {
           </div>
         </div>
 
+        {(user.role === 'admin' || user.role === 'staff') && (
+          <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#f0f8ff', borderRadius: '5px', textAlign: 'center' }}>
+            <p style={{ marginBottom: '10px', color: '#333' }}>
+              <strong>🎯 Acceso Administrativo</strong>
+            </p>
+            <button
+              onClick={() => navigate('/pedidos')}
+              style={{
+                padding: '12px 24px',
+                backgroundColor: '#28a745',
+                color: 'white',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                fontSize: '1rem',
+                fontWeight: 'bold'
+              }}
+            >
+              📦 Ir a Gestión de Pedidos
+            </button>
+          </div>
+        )}
+
         {!editing ? (
           <div className="profile-details">
             <div className="detail-item">
