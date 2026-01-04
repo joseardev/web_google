@@ -1,0 +1,120 @@
+.pedido-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.pedido-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pedido-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.pedido-numero {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.pedido-prioridad {
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.pedido-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pedido-items {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.pedido-items p {
+  margin: 5px 0 0 0;
+  color: #555;
+}
+
+.pedido-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.info-item strong {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.info-item span {
+  color: #333;
+}
+
+.info-item .notas {
+  margin: 5px 0 0 0;
+  padding: 8px;
+  background: #fff3cd;
+  border-radius: 4px;
+  color: #856404;
+  font-size: 0.9rem;
+}
+
+.pedido-estado-select {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.pedido-estado-select label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.pedido-estado-select select {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.pedido-estado-select select:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pedido-info {
+    grid-template-columns: 1fr;
+  }
+
+  .pedido-card-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}

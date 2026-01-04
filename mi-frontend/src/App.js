@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
+import PedidosList from './components/pedidos/PedidosList';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
@@ -25,6 +26,15 @@ function App() {
             element={
               <PrivateRoute>
                 <Profile />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/pedidos"
+            element={
+              <PrivateRoute>
+                <PedidosList />
               </PrivateRoute>
             }
           />
