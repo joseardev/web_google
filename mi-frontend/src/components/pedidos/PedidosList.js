@@ -19,41 +19,6 @@ const PedidosList = () => {
 
   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
-  // Verificar permisos al cargar el componente
-  if (user && user.role !== 'admin' && user.role !== 'staff') {
-    return (
-      <div className="pedidos-container">
-        <div className="error-message" style={{ marginTop: '50px', padding: '30px', textAlign: 'center' }}>
-          <h2>❌ Acceso Denegado</h2>
-          <p style={{ fontSize: '1.1rem', marginTop: '20px' }}>
-            No tienes permisos para acceder a esta página.
-          </p>
-          <p style={{ marginTop: '10px' }}>
-            Solo los usuarios con rol <strong>admin</strong> o <strong>staff</strong> pueden ver y gestionar pedidos.
-          </p>
-          <p style={{ marginTop: '10px', color: '#666' }}>
-            Tu rol actual: <strong>{user.role}</strong>
-          </p>
-          <button
-            onClick={() => window.location.href = '/profile'}
-            style={{
-              marginTop: '30px',
-              padding: '12px 24px',
-              backgroundColor: '#007bff',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontSize: '1rem'
-            }}
-          >
-            Volver a Mi Perfil
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   // Función para cargar pedidos
   const cargarPedidos = async () => {
     setLoading(true);
@@ -147,7 +112,43 @@ const PedidosList = () => {
   useEffect(() => {
     cargarPedidos();
     cargarEstadisticas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filtros]);
+
+  // Verificar permisos después de los hooks
+  if (user && user.role !== 'admin' && user.role !== 'staff') {
+    return (
+      <div className="pedidos-container">
+        <div className="error-message" style={{ marginTop: '50px', padding: '30px', textAlign: 'center' }}>
+          <h2>❌ Acceso Denegado</h2>
+          <p style={{ fontSize: '1.1rem', marginTop: '20px' }}>
+            No tienes permisos para acceder a esta página.
+          </p>
+          <p style={{ marginTop: '10px' }}>
+            Solo los usuarios con rol <strong>admin</strong> o <strong>staff</strong> pueden ver y gestionar pedidos.
+          </p>
+          <p style={{ marginTop: '10px', color: '#666' }}>
+            Tu rol actual: <strong>{user.role}</strong>
+          </p>
+          <button
+            onClick={() => window.location.href = '/profile'}
+            style={{
+              marginTop: '30px',
+              padding: '12px 24px',
+              backgroundColor: '#007bff',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontSize: '1rem'
+            }}
+          >
+            Volver a Mi Perfil
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (loading && pedidos.length === 0) {
     return (
