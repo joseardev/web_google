@@ -14,7 +14,7 @@ const Dashboard = () => {
       description: 'Gestión de pedidos y estados',
       path: '/pedidos',
       color: '#007AFF',
-      roles: ['admin', 'staff'],
+      roles: ['admin', 'staff', 'user'],
     },
     {
       title: 'Usuarios',

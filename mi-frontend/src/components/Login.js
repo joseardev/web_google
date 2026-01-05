@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logo from '../logo.png';
 import './Auth.css';
 
 function Login() {
@@ -31,6 +32,9 @@ function Login() {
   return (
     <div className="auth-container">
       <div className="auth-box">
+        <div className="auth-logo-container">
+          <img src={logo} alt="Logo" className="auth-logo" />
+        </div>
         <h2>Iniciar Sesión</h2>
 
         {error && <div className="error-message">{error}</div>}

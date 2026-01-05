@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logo from '../logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -27,8 +28,8 @@ const Navbar = () => {
       <div className="navbar-container">
         <div className="navbar-brand">
           <Link to="/" className="brand-link">
-            <span className="brand-icon">📦</span>
-            <span className="brand-text">OrderHub</span>
+            <img src={logo} alt="Logo" className="navbar-logo" />
+            <span className="brand-text">Google Web</span>
           </Link>
         </div>
 
@@ -38,12 +39,10 @@ const Navbar = () => {
             <span className="nav-text">Inicio</span>
           </Link>
 
-          {(user?.role === 'admin' || user?.role === 'staff') && (
-            <Link to="/pedidos" className={`nav-link ${isActive('/pedidos')}`}>
-              <span className="nav-icon">📋</span>
-              <span className="nav-text">Pedidos</span>
-            </Link>
-          )}
+          <Link to="/pedidos" className={`nav-link ${isActive('/pedidos')}`}>
+            <span className="nav-icon">📋</span>
+            <span className="nav-text">Pedidos</span>
+          </Link>
         </div>
 
         <div className="navbar-user">
