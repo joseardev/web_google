@@ -17,6 +17,14 @@ const Dashboard = () => {
       roles: ['admin', 'staff'],
     },
     {
+      title: 'Usuarios',
+      icon: '👥',
+      description: 'Administrar usuarios y permisos',
+      path: '/users',
+      color: '#FF2D55',
+      roles: ['admin'],
+    },
+    {
       title: 'Estadísticas',
       icon: '📊',
       description: 'Métricas y análisis de pedidos',

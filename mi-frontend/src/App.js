@@ -6,6 +6,8 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
 import PedidosList from './components/pedidos/PedidosList';
+import UsersList from './components/users/UsersList';
+import UserEdit from './components/users/UserEdit';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
@@ -51,6 +53,24 @@ function App() {
             element={
               <PrivateRoute>
                 <PedidosList />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/users"
+            element={
+              <PrivateRoute>
+                <UsersList />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/users/:userId/edit"
+            element={
+              <PrivateRoute>
+                <UserEdit />
               </PrivateRoute>
             }
           />
