@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import Navbar from '../Navbar';
 import PedidoCard from './PedidoCard';
 import PedidoFilters from './PedidoFilters';
 import './PedidosList.css';
@@ -118,48 +119,56 @@ const PedidosList = () => {
   // Verificar permisos después de los hooks
   if (user && user.role !== 'admin' && user.role !== 'staff') {
     return (
-      <div className="pedidos-container">
-        <div className="error-message" style={{ marginTop: '50px', padding: '30px', textAlign: 'center' }}>
-          <h2>❌ Acceso Denegado</h2>
-          <p style={{ fontSize: '1.1rem', marginTop: '20px' }}>
-            No tienes permisos para acceder a esta página.
-          </p>
-          <p style={{ marginTop: '10px' }}>
-            Solo los usuarios con rol <strong>admin</strong> o <strong>staff</strong> pueden ver y gestionar pedidos.
-          </p>
-          <p style={{ marginTop: '10px', color: '#666' }}>
-            Tu rol actual: <strong>{user.role}</strong>
-          </p>
-          <button
-            onClick={() => window.location.href = '/profile'}
-            style={{
-              marginTop: '30px',
-              padding: '12px 24px',
-              backgroundColor: '#007bff',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontSize: '1rem'
-            }}
-          >
-            Volver a Mi Perfil
-          </button>
+      <>
+        <Navbar />
+        <div className="pedidos-container">
+          <div className="error-message" style={{ marginTop: '50px', padding: '30px', textAlign: 'center' }}>
+            <h2>❌ Acceso Denegado</h2>
+            <p style={{ fontSize: '1.1rem', marginTop: '20px' }}>
+              No tienes permisos para acceder a esta página.
+            </p>
+            <p style={{ marginTop: '10px' }}>
+              Solo los usuarios con rol <strong>admin</strong> o <strong>staff</strong> pueden ver y gestionar pedidos.
+            </p>
+            <p style={{ marginTop: '10px', color: '#666' }}>
+              Tu rol actual: <strong>{user.role}</strong>
+            </p>
+            <button
+              onClick={() => window.location.href = '/profile'}
+              style={{
+                marginTop: '30px',
+                padding: '12px 24px',
+                backgroundColor: '#007bff',
+                color: 'white',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                fontSize: '1rem'
+              }}
+            >
+              Volver a Mi Perfil
+            </button>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (loading && pedidos.length === 0) {
     return (
-      <div className="pedidos-container">
-        <div className="loading">Cargando pedidos...</div>
-      </div>
+      <>
+        <Navbar />
+        <div className="pedidos-container">
+          <div className="loading">Cargando pedidos</div>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="pedidos-container">
+    <>
+      <Navbar />
+      <div className="pedidos-container">
       <div className="pedidos-header">
         <h1>📦 Gestión de Pedidos de Telegram</h1>
         <button className="btn-recargar" onClick={() => { cargarPedidos(); cargarEstadisticas(); }}>
@@ -215,7 +224,8 @@ const PedidosList = () => {
           />
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

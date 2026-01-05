@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import './Auth.css';
+import Navbar from './Navbar';
+import './Profile.css';
 
 function Profile() {
-  const { user, logout, updateProfile, getProfile } = useAuth();
+  const { user, updateProfile, getProfile } = useAuth();
   const navigate = useNavigate();
 
   const [fullName, setFullName] = useState('');
@@ -20,11 +21,6 @@ function Profile() {
       setEmail(user.email || '');
     }
   }, [user]);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -57,14 +53,13 @@ function Profile() {
   }
 
   return (
-    <div className="auth-container">
-      <div className="profile-box">
-        <div className="profile-header">
-          <h2>Mi Perfil</h2>
-          <button onClick={handleLogout} className="btn-secondary">
-            Cerrar Sesión
-          </button>
-        </div>
+    <>
+      <Navbar />
+      <div className="profile-container">
+        <div className="profile-box">
+          <div className="profile-header">
+            <h2>Mi Perfil</h2>
+          </div>
 
         {message && <div className="success-message">{message}</div>}
         {error && <div className="error-message">{error}</div>}
@@ -89,24 +84,17 @@ function Profile() {
         </div>
 
         {(user.role === 'admin' || user.role === 'staff') && (
-          <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#f0f8ff', borderRadius: '5px', textAlign: 'center' }}>
-            <p style={{ marginBottom: '10px', color: '#333' }}>
-              <strong>🎯 Acceso Administrativo</strong>
+          <div className="admin-access-card">
+            <h3>🎯 Acceso Administrativo</h3>
+            <p style={{ color: '#6c757d', marginBottom: '1rem' }}>
+              Tienes acceso a la gestión de pedidos de Telegram
             </p>
             <button
               onClick={() => navigate('/pedidos')}
-              style={{
-                padding: '12px 24px',
-                backgroundColor: '#28a745',
-                color: 'white',
-                border: 'none',
-                borderRadius: '5px',
-                cursor: 'pointer',
-                fontSize: '1rem',
-                fontWeight: 'bold'
-              }}
+              className="btn-admin-access"
             >
-              📦 Ir a Gestión de Pedidos
+              <span>📋</span>
+              <span>Ver Panel de Pedidos</span>
             </button>
           </div>
         )}
@@ -163,8 +151,9 @@ function Profile() {
             </div>
           </form>
         )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
