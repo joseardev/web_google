@@ -29,7 +29,7 @@ const Navbar = () => {
         <div className="navbar-brand">
           <Link to="/" className="brand-link">
             <img src={logo} alt="Logo" className="navbar-logo" />
-            <span className="brand-text">Google Web</span>
+            <span className="brand-text">OrderHub</span>
           </Link>
         </div>
 
